@@ -1,0 +1,20 @@
+graph TD
+    A[Start Game] --> B[Select Random Word]
+    B --> C[Initialize Chances: Length + 2]
+    C --> D{Game Over?}
+    D -- No --> E[User Input: Guess Letter]
+    E --> F{Valid Letter?}
+    F -- No --> G[Show Error] --> E
+    F -- Yes --> H{Already Guessed?}
+    H -- Yes --> G
+    H -- No --> I{In Word?}
+    I -- Yes --> J[Reveal Letter Positions]
+    I -- No --> K[Decrement Chances]
+    J --> L{All Letters Guessed?}
+    L -- Yes --> M[Game Won]
+    L -- No --> D
+    K --> N{Chances == 0?}
+    N -- Yes --> O[Game Lost]
+    N -- No --> D
+    M --> P[End]
+    O --> P
